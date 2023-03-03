@@ -1,0 +1,33 @@
+<div class="container mt-5 mb-5" *ngIf="productDetail">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4">
+                                <img src="{{productDetail.image}}" width="400" height="400"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="productDetail p-4">
+                            <div class="d-flex justify-content-between align-item-center">
+                                <div class="d-flex align-item-center" (click)="removeproduct()"><span>Back</span></div>
+                            </div>
+                            <div class="mt-4 mb-3">
+                                <h5 class="text-uppercase">{{productDetail.title}}</h5>
+                                <div class="price d-flex flex-row align-item-center">
+                                    <p>{{productDetail.price}}</p>
+                                    <p>{{productDetail.rating.rate}}</p>
+                                </div>
+                            </div>
+                            <p>{{productDetail.description}}</p>
+                            <button (click)="editSingleProduct();" mat-raised-button color="primary">Edit Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

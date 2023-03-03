@@ -1,22 +1,63 @@
-<p *ngIf="toggle">login works!</p>
-<button (click)="callToggle()">Toggle</button>
+  <!--<div class="container mt-5">
+        <div class="row d-flex justify-content-center align-items-center mt-10">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <img src="assets/draw2.webp" class="img-fluid" alt="Sample image" />
+              </div>
+              <div class="col-md-4 col-lg-6 col-xl-4 offset-xl-1">
 
-<div class="container-fliud">
-    <div class="row">
-        <div class="col-12">
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="email" value="">
-              </mat-form-field>
-        </div>
-        <div class="col-12">
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="password" value="">
-              </mat-form-field>
-        </div>
-        <div class="col-12">
-            <button mat-raised-button color="primary">Primary</button>
-        </div>
-    </div>
+            <form #userForm="ngForm" className="mt-5">
+                <div class="form-group">
+                <label>Username</label>
+                <input
+                    required
+                    type="text"
+                    class="form-control"
+                    [(ngModel)] = "loginObj.username"
+                    name="username"
+                    />
+                </div>
+                <div class="form-group">
+                <label>Password</label>
+                <input
+                    required
+                    type="password"
+                    class="form-control"
+                    [(ngModel)] = "loginObj.password"
+                    name="password"
+                    />
+                </div>
+                <button
+                type="submit"
+                class="btn btn-primary"
+                (click)="onLogin()"
+                >
+                Login
+                </button>
+            </form>
+            </div>
 </div>
+</div>-->
+<section class="mt-5">
+<div class="main">  	
+    <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Login</label>
+                <input type="text" name="text" [(ngModel)] = "loginObj.username" placeholder="Username" required="">
+                <input type="password" name="pswd" [(ngModel)] = "loginObj.password" placeholder="Password" required="">
+                <button (click)="onLogin()">Login</button>
+            </form>
+        </div>
+
+        <div class="login">
+            <form>
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="txt" [(ngModel)] = "signupobj.username" placeholder="User name"  required="">
+                <input type="email" name="email" [(ngModel)] = "signupobj.email" placeholder="Email" required="">
+                <input type="password" name="pswd" [(ngModel)] = "signupobj.password" placeholder="Password" required="">
+                <button (click)="onSignUp()">Sign up</button>
+            </form>
+        </div>
+</div>
+</section>
+

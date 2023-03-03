@@ -1,84 +1,18 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <img src="https://63a14d3b5967c53c97408dc4--beautiful-dango-1235f0.netlify.app/_next/image?url=%2Fcart.png&w=256&q=75" class="logo" width={100} height={100}/>
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-           <input type="text" class="form-control" placeholder="Search Here"/>
-        </div>
-        <div class="col-md-3 d-flex align-items-center justify-content-end">
-            <ul class="d-flex">
-                <li class="px-1">
-                 <img src="https://63a14d3b5967c53c97408dc4--beautiful-dango-1235f0.netlify.app/_next/image?url=%2Ffacebook.png&w=96&q=75" class="social" width={40} height={40}/>
-                </li>
-                <li class="px-1">
-                 <img src="https://63a14d3b5967c53c97408dc4--beautiful-dango-1235f0.netlify.app/_next/image?url=%2Flinkedin.png&w=96&q=75" class="social" width={40} height={40}/>
-                </li>
-                <li class="px-1">
-                 <img src="https://63a14d3b5967c53c97408dc4--beautiful-dango-1235f0.netlify.app/_next/image?url=%2Fgoogleplus.png&w=96&q=75" class="social" width={40} height={40}/>
-                </li>
-                <li class="px-1">
-                 <img src="https://63a14d3b5967c53c97408dc4--beautiful-dango-1235f0.netlify.app/_next/image?url=%2Ftwitter.png&w=96&q=75" class="social" width={40} height={40}/>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <nav class="navbar navbar-expand-lg bg-primary">
-        <div class="container-fluid">
-          <div className="col-md-8">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item px-2">
-                  <a href="/" class="text-white">
-                    Home
-                  </a>
-                </li>
-                <li class="nav-item px-2">
-                  <a href="/about" class="text-white">
-                    About
-                  </a>
-                </li>
-                <li class="nav-item px-2">
-                  <a href="/facilities" class="text-white">
-                    Facilities
-                  </a>
-                </li>
-                <li class="nav-item px-2">
-                  <a href="/contact" class="text-white">
-                    Contact
-                  </a>
-                </li>
-                <li class="nav-item px-2">
-                  <a href="/products" class="text-white">
-                    Products
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-md-4">
-          <button type="button" class="btn btn-dark m-1"><a href="/login" class="text-white">
-          Login
-          </a></button>
-          <button type="button" class="btn btn-dark m-1"><a href="/" class="text-white">
-          Logout
-          </a></button>
-          <button type="button" class="btn btn-dark m-1"><a href="/registration" class="text-white">
-          Registration
-          </a></button>
-          </div>
-        </div>
-      </nav>
     <div class="row py-5">
-        <div class="col-4 d-flex mb-2" *ngFor="let product of products.users">
+      <div class="form-group">
+        <input type="text" class="form-control mb-5" placeholder="Enter text to search" id="search-text" name="searchText" aria-describedby="search-text" [(ngModel)]="searchText" >
+       </div>
+        <div class="col-4 d-flex mb-5" *ngFor="let product of products | LockFilter: searchText | paginate: { itemsPerPage: 4, currentPage: p}">
           <div class="card align-items-center px-3 py-3">
-            <img src={{product.thumbnail}} />
-            <p>{{product.brand}}</p>
+            <img src={{product.image}} width="250" height="250"/>
+            <p>{{product.title}}</p>
             <p>{{product.category}}</p>
-            <p>{{product.discountPercentage}}</p>
-            <p>{{product.description}}</p>
-            <button (click)="passData(product)" mat-raised-button color="primary">Buy Product</button>
+            <p>{{product.price}}</p>
+            <p class="readmore">{{product.description}}</p>
+          <a href="{{'single-product/'+product.id }}" class="btn btn-primary">Buy Product</a>
           </div>
         </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>

@@ -1,0 +1,27 @@
+img{
+    width: 200px;
+    height: 200px;
+    &.logo{
+        width: 100px;
+        height: auto;
+    }
+    &.social{
+        width: 40px;
+        height: auto;
+    }
+}
+ul{
+    list-style: none;
+    .nav-link{
+        font-size: 16px;
+        color: white;
+    }
+    .nav-link.active{
+        color: black;
+    }
+}
+h1{
+    span{
+        color: #0d6efd;
+    }
+}

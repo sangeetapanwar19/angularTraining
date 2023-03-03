@@ -17,5 +17,25 @@
   {{ product.id}}
   {{ product.desc}}
 </div>-->
-<app-product (productDetail)="getData($event)"></app-product>
-<div class="bg-primary text-white p-1 text-center">© All Right Reserved 2022 Education</div>
+<ng-container *ngIf="!loggedin;else homeScreen">
+  <app-login (isloggedin)="checkloginstatus($event)"></app-login>
+</ng-container>
+<ng-template #homeScreen>
+  <app-navbar (log)="checkloginstatus($event)"></app-navbar>
+  <div class="container-fluid">
+    <main role="main" class="container">
+      <router-outlet></router-outlet>
+      <!--<div *ngIf="!ProductId; else singleProducts">
+        <app-product (productDetail)="assignData($event)"></app-product>
+      </div>
+      <div>
+        <ng-template #singleProducts>
+          <app-single-product (removeValue)="assignData($event)" [id]="ProductId"></app-single-product>
+        </ng-template>
+      </div>-->
+    </main>
+  </div>
+  <app-footer></app-footer>
+</ng-template>
+
+

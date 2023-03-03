@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { CommonService } from './common.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularTraining';
-  
+  loggedin: boolean = false;
+
+  constructor(private auth: CommonService){
+    if(localStorage.getItem('token') != null){
+        this.loggedin=true;
+    }
+  }
+  checkloginstatus(event:any){
+    this.loggedin=event;
+}
   products = [
     {
       title : 'Product 1',
@@ -25,7 +34,12 @@ export class AppComponent {
       desc: 'abc3'
     }
   ]
+  ProductId:any = null;
   getData(event:any){
     console.log(event);
+  }
+  assignData(event:any){
+    console.log(event);
+    this.ProductId = event;
   }
 }
